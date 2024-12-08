@@ -1,0 +1,24 @@
+replicaCount: 1
+
+backend:
+  image:
+    repository: shreybatra/sample-backend
+    tag: latest
+  env:
+    REDIS_URI: redis://redis-svc:6379
+  port: 8000
+
+frontend:
+  image:
+    repository: shreybatra/sample-frontend
+    tag: latest
+  env:
+    BACKEND_URL: http://backend-svc:8000
+  port: 5175
+  nodePort: 31000
+
+redis:
+  image:
+    repository: redis
+    tag: latest
+  port: 6379
